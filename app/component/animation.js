@@ -14,8 +14,6 @@ export  class animation extends React.Component {
      
     );
   }
-  
-  
   }
   
 
