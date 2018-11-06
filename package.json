@@ -10,6 +10,7 @@
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.4",
     "react-native-simple-toast": "0.0.8",
+    "react-native-sqlite-storage": "^3.3.7",
     "react-navigation": "^2.9.3"
   },
   "devDependencies": {

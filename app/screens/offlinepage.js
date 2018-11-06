@@ -2,7 +2,8 @@ import React from "react";
 
 import {View,Text,Button} from 'react-native';
 import Netinformation from '../service/Netinformation'
-import LocalStorage from '../service/LocalStorage'
+// import LocalStorage from '../service/LocalStorage'
+import Relationaldb from '../service/Relationaldb';
 export  class offlinepage extends React.Component {
   constructor(props){
     super(props)
@@ -17,18 +18,12 @@ export  class offlinepage extends React.Component {
  onPress =  { () => this._test()} 
   title="Learn More"
   color="#841584"
-  accessibilityLabel="Learn more about this purple button"
-/>
+  accessibilityLabel="Learn more about this purple button"/>
      </View>
-     
     );
   }
   _test(){
-    console.log("inside test function")
-    console.log(Netinformation._getnetinfo())
-    if(Netinformation._getnetinfo()){
-      alert("You r offline please turn on mobile data/ wifi" )
-    }
+  console.log("inside test function")
 const url = 'http://chatbot.creatise.in/claprslap_api/polls'
     fetch(url, {
       method: 'GET', 
@@ -47,8 +42,7 @@ const url = 'http://chatbot.creatise.in/claprslap_api/polls'
         alert(msg);
        }else {
         profiledata = result['responseData'].data;
-        LocalStorage._storeData(profiledata)
-        this.props.navigation.navigate('test');
+       this.getstore(profiledata)
        }
       
     })
@@ -57,8 +51,14 @@ const url = 'http://chatbot.creatise.in/claprslap_api/polls'
     });
    
   }
+  getstore(profiledata){
+    console.log("inside getstore function")
+    console.log(profiledata)
+    Relationaldb._insert(profiledata);
+    this.props.navigation.navigate('demo');
+  }
   
   }
   
 
-
+ 
